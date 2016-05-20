@@ -1,7 +1,12 @@
 {
   "name": "shack",
   "description": "Team Project",
-  "author": ["Jason Lee", "Daniel Jang", "Jin Lee", "Alex Park"],
+  "author": [
+    "Jason Lee",
+    "Daniel Jang",
+    "Jin Lee",
+    "Alex Park"
+  ],
   "version": "1.0.0",
   "homepage": "",
   "license": "MIT",
@@ -11,6 +16,7 @@
     "angular-route": "~1.4.0",
     "angular-loader": "~1.4.0",
     "angular-mocks": "~1.4.0",
-    "html5-boilerplate": "~5.2.0"
+    "html5-boilerplate": "~5.2.0",
+    "angular-ui-router": "~0.3.0"
   }
 }
