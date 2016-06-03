@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html lang="en" ng-app="shack" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="shack" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="shack" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html lang="en" ng-app="shack" class="no-js">
 <!--<![endif]-->
 <head>
@@ -17,43 +17,20 @@
     <!--<link rel="icon" type="" href=""> -->
 
     <!-- Styles -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css" />
+    <link rel="stylesheet" href="./bower_components/angular-material-icons/angular-material-icons.css"/>
     <link rel="stylesheet" href="asset/app.css">
 
+
 </head>
-<body>
-    <div flex layout="row">
-        <!--<md-sidenav flex class="md-sidenav-left md-whiteframe-z2"-->
-            <!--md-component-id="left"-->
-            <!--md-is-locked-open="$mdMedia('gt-md')">-->
-
-            <!--<md-toolbar>-->
-                <!--<h1 class="md-toolbar-tools">Sidenav</h1>-->
-            <!--</md-toolbar>-->
-
-            <!--<md-list class="sidenav">-->
-                <!--<md-list-item><img ng-src="asset/images/default.svg">Hello, User</md-list-item>-->
-                <!--<md-divider></md-divider>-->
-                <!--<md-list-item>-->
-                  <!--<md-button ui-sref="main">Main</md-button>-->
-                <!--</md-list-item>-->
-                <!--<md-list-item>-->
-                  <!--<md-button ui-sref="car_detail">Car Detail</md-button>-->
-                <!--</md-list-item>-->
-                <!--<md-list-item>-->
-                  <!--<md-button ui-sref="account">Account</md-button>-->
-                <!--</md-list-item>-->
-                <!--<md-list-item layout="row" layout-align="center center">-->
-                  <!--<md-button class="md-raised md-primary" ng-click="logout()">-->
-                    <!--Logout-->
-                  <!--</md-button>-->
-                <!--</md-list-item>-->
-            <!--</md-list>-->
-        <!--</md-sidenav>-->
-        <div ng-include="'main/sidenav.html'" layout="vertical"></div>
-        <div ui-view tab Index="-1" role="main" flex layout="column"></div>
+<body ng-cloak>
+    <div ng-include="'main/main.header.html'"></div>
+    <div  layout="row" >
+        <div ng-include="'main/main.filter.html'"></div>
+        <div ui-view></div>
     </div>
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -67,6 +44,8 @@
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-aria/angular-aria.min.js"></script>
     <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="./bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
 
     <!-- scripts -->
     <script src="app.js"></script>

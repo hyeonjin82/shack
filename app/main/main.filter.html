@@ -1,0 +1,55 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z5"
+            md-component-id="left"
+            md-is-locked-open="$mdMedia('gt-md')">
+    <md-toolbar class="md-tall md-hue-2">
+        <span flex></span>
+        <div layout="column" class="md-toolbar-tools-bottom inset">
+            <user-avatar></user-avatar>
+            <span></span>
+            <div>Hyeonjin Lee</div>
+            <div>hyeonjinlee@gmail.com</div>
+        </div>
+    </md-toolbar>
+    <md-toolbar class="md-toolbar-tools-bottom inset">
+        <h2> Car Filter </h2>
+    </md-toolbar>
+    <div layout-padding>
+        <md-autocomplete
+                md-search-text="vm.searchText"
+                md-items="item in vm.cars | filter:vm.searchText"
+                md-item-text="item.name"
+                md-min-length="3"
+                placeholder="filter">
+            <md-item-template>
+                <span md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.name}}</span>
+            </md-item-template>
+            <md-not-found>
+                No user matching "{{vm.searchText}}" were found.
+            </md-not-found>
+        </md-autocomplete>
+    </div>
+
+
+    <md-subheader> Make </md-subheader>
+    <md-divider></md-divider>
+    <md-subheader> Model </md-subheader>
+    <md-divider></md-divider>
+    <md-subheader> Year </md-subheader>
+
+    <md-button class="send-button md-primary md-raised" > Search Car </md-button>
+    <!--<md-content class="scrollable-nav-content">-->
+        <!--<md-list>-->
+            <!--<md-list-item ng-repeat="car in vm.cars">-->
+                <!--<md-button ng-click="vm.selectUser(user)"-->
+                           <!--ng-class="{'selected': user === vm.selected }">-->
+                    <!--<md-icon md-svg-icon="{{user.avatar}}" class="avatar"></md-icon>-->
+                    <!--{{car.make}}-->
+                <!--</md-button>-->
+
+            <!--</md-list-item>-->
+        <!--</md-list>-->
+    <!--</md-content>-->
+    <!--<md-button class="md-fab md-fab-bottom-right" ng-click="vm.addUser($event)">-->
+        <!--<ng-md-icon icon="add" ng-click="vm.addUser($event)"></ng-md-icon>-->
+    <!--</md-button>-->
+</md-sidenav>

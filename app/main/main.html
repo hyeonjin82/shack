@@ -1,135 +1,118 @@
-<div ng-include="'main/main-header.html'"></div>
-<md-content flex id="content">
-    <div ng-cloak>
-        <md-content class="md-padding" layout-xs="column" layout="row">
+<div layout-padding>
+    <md-autocomplete
+            md-search-text="searchText"
+            md-items="item in cars | filter:searchText"
+            md-item-text="item.make"
+            md-min-length="2"
+            placeholder="search">
+        <md-item-template>
+            <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.make}}</span>
+        </md-item-template>
+        <md-not-found>
+            No user matching "{{searchText}}" were found.
+        </md-not-found>
+    </md-autocomplete>
+</div>
+<md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex">
+    <md-tab id="tab1" md-selected="tab1-content">
+        Card View
+    </md-tab>
+    <md-tab id="tab2" aria-controls="tab2-content">
+        List View
+    </md-tab>
+</md-tabs>
+<ui-view layout="column" layout-fill layout-padding>
+    <div class="inset" hide-sm></div>
+    <ng-switch on="data.selectedIndex" class="tabpanel-container">
+<div role="tabpanel"
+     id="tab1-content"
+     aria-labelledby="tab1"
+     ng-switch-when="0"
+     md-swipe-left="next()"
+     md-swipe-right="previous()"
+     layout="row" layout-align="center center">
+<md-content layout-xs="column" layout-wrap layout="row" role="main">
+    <md-button class=" md-fab md-fab-top-left" ng-click="addCar($event)">
+        <ng-md-icon icon="add" aria-label="Add"></ng-md-icon>
+    </md-button>
+    <div flex md-scroll-y layout="row" flex-gt-xs="33" flex="100" ng-repeat="car in cars | filter:searchText">
+        <md-card flex>
+            <img ng-src="asset/images/{{car.image}}" class="md-card-image" alt="Washed Out">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{car.make}} {{ car.model}}</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>
+                    color : {{ car.color}}
+                </p>
+                <p>
+                    year : {{ car.year}}
+                </p>
+                <p>
+                    {{ car.des }}
+                </p>
 
-
-            <!--<md-list>-->
-            <!--<md-list-item ng-repeat="car in vm.cars">-->
-            <!--{{car.serial}}-->
-            <!--</md-list-item>-->
-            <!--</md-list>-->
-
-            <div flex-xs flex-gt-xs="50" layout="column">
-                <md-card>
-                    <img ng-src="asset/images/car.jpg" class="md-card-image" alt="Washed Out">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline">{{vm.cars[0].make}}</span>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <p>
-                            model : {{ vm.cars[0].model}}
-                        </p>
-                        <p>
-                            color : {{ vm.cars[0].color}}
-                        </p>
-                        <p>
-                            year : {{ vm.cars[0].year}}
-                        </p>
-                        <p>
-                            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-                            two most important words in Ernest Greene's musical language: feel it. It's a simple
-                            request, as well...
-                        </p>
-                        <p>
-                            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-                            two most important words in Ernest Greene's musical language: feel it. It's a simple
-                            request, as well...
-                        </p>
-                    </md-card-content>
-                    <md-card-actions layout="row" layout-align="end center">
-                        <md-button ui-sref="car_detail">Action 1</md-button>
-                        <md-button ui-sref="car_detail">Action 2</md-button>
-                    </md-card-actions>
-                </md-card>
-                <md-card>
-                    <img ng-src="asset/images/car.jpg" class="md-card-image" alt="Washed Out">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline">Vertical action buttons</span>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <p>
-                            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-                            two most important words in Ernest Greene's musical language: feel it. It's a simple
-                            request, as well...
-                        </p>
-                    </md-card-content>
-                    <md-card-actions layout="column" layout-align="start">
-                        <md-button>Action 1</md-button>
-                        <md-button>Action 2</md-button>
-                    </md-card-actions>
-                </md-card>
-            </div>
-            <div flex-xs flex-gt-xs="50" layout="column">
-                <md-card>
-                    <img ng-src="asset/images/car.jpg" class="md-card-image" alt="Washed Out">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline">Icon action buttons</span>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <p>
-                            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-                            two most important words in Ernest Greene's musical language: feel it. It's a simple
-                            request, as well...
-                        </p>
-                    </md-card-content>
-                    <md-card-actions layout="row" layout-align="end center">
-                        <md-button class="md-icon-button" aria-label="Favorite">
-                            <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button" aria-label="Settings">
-                            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button" aria-label="Share">
-                            <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
-                        </md-button>
-                    </md-card-actions>
-                </md-card>
-                <md-card>
-                    <img ng-src="asset/images/car.jpg" class="md-card-image" alt="Washed Out">
-                    <md-card-actions layout="row" layout-align="end center">
-                        <md-button class="md-icon-button" aria-label="Favorite">
-                            <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button" aria-label="Settings">
-                            <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-                        </md-button>
-                        <md-button class="md-icon-button" aria-label="Share">
-                            <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
-                        </md-button>
-                    </md-card-actions>
-                </md-card>
-                <md-card>
-                    <md-card-header>
-                        <md-card-avatar>
-                            <img src="img/logo.svg"/>
-                        </md-card-avatar>
-                        <md-card-header-text>
-                            <span class="md-title">Angular</span>
-                            <span class="md-subhead">Material</span>
-                        </md-card-header-text>
-                    </md-card-header>
-                    <img ng-src="asset/images/car.jpg" class="md-card-image" alt="Washed Out">
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline">Card header</span>
-                        </md-card-title-text>
-                    </md-card-title>
-                    <md-card-content>
-                        <p>
-                            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-                            two most important words in Ernest Greene's musical language: feel it. It's a simple
-                            request, as well...
-                        </p>
-                    </md-card-content>
-                </md-card>
-            </div>
-        </md-content>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ui-sref="car_detail" class="send-button md-accent md-raised">Detail</md-button>
+                <md-button ui-sref="car_detail" class="send-button md-primary md-raised">Edit</md-button>
+            </md-card-actions>
+        </md-card>
     </div>
 </md-content>
+</div>
+
+<div role="tabpanel"
+     id="tab2-content"
+     aria-labelledby="tab2"
+     ng-switch-when="1"
+     md-swipe-left="next()"
+     md-swipe-right="previous()"
+     layout="row" layout-align="center center">
+    <md-card flex-gt-sm="90" flex-gt-md="80">
+        <md-card-content>
+            <md-list>
+                <md-item ng-repeat="car in cars | filter:searchText">
+                    <md-item-content layout="row">
+                        <div class="md-tile-left inset" hide-sm>
+                            <user-avatar></user-avatar>
+                        </div>
+                        <div class="md-tile-content">
+                            <div layout="row" layout-align="space-between">
+                                <div>
+                                    <h3>{{car.make}}</h3>
+                                    <h4>{{car.model}} {{car.year}}</h4>
+                                </div>
+                                <div></div>
+                                <div>
+                                    <md-button ui-sref="car_detail" class="send-button md-accent md-raised">Detail
+                                    </md-button>
+                                    <md-button ui-sref="car_detail" class="send-button md-primary md-raised">Edit
+                                    </md-button>
+                                </div>
+                            </div>
+                            <p>
+                                {{car.des}}
+                            </p>
+                        </div>
+                    </md-item-content>
+                    <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                    <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+                </md-item>
+                <md-divider></md-divider>
+                <md-item layout class="inset">
+                    <md-button layout layout-align="start center" flex class="md-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                        </svg>
+                        More
+                    </md-button>
+                </md-item>
+            </md-list>
+        </md-card-content>
+    </md-card>
+</div>
+</ng-switch>
+    </ui-view>
