@@ -1,4 +1,4 @@
-<md-dialog ng-controller="addCarController">
+<md-dialog ng-controller="AddCarController">
     <form name="carForm"  ng-submit="save()">
         <md-dialog-content class="md-padding">
             <div layout="column" layout-padding>
@@ -6,51 +6,51 @@
                     <md-input-container class="md-block" flex>
                         <label>Make</label>
                         <input ng-model="car.make" name="make" required>
-                        <div ng-messages="carForm.make.$error.required">
-                            <div ng-message="required">This is required.</div>
+                        <div ng-messages="carForm.make.$invalid" ng-show="carForm.make.$touched">
+                            <div ng-show="carForm.make.$invalid">This is required!</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block" flex>
                         <label>Model</label>
                         <input ng-model="car.model" name="model" required>
-                        <div ng-messages="carForm.model.$error.required">
-                            <div ng-message="required">This is required.</div>
+                        <div ng-messages="carForm.model.$invalid" ng-show="carForm.model.$touched" >
+                            <div ng-show="carForm.model.$invalid">This is required.</div>
                         </div>
                     </md-input-container>
                 </div>
                 <div layout layout-sm="column" class="md-block">
-                    <md-input-container flex>
+                    <md-input-container flex="35">
                         <label>Color</label>
                         <md-select ng-model="car.color" name="color" required>
                             <md-option ng-repeat="color in colors" ng-value="color">
                                 {{ color }}
                             </md-option>
                         </md-select>
-                        <div ng-messages="carForm.color.$error.required">
-                            <div ng-message="required">This is required.</div>
+                        <div ng-messages="carForm.color.$error" ng-show="carForm.color.$touched">
+                            <div ng-show="carForm.color.$invalid">This is required.</div>
                         </div>
                     </md-input-container>
-                    <md-input-container flex>
+                    <md-input-container flex="25">
                         <label>Engine Type</label>
                         <input ng-model="car.enginetype" name="enginetype" required>
-                        <div ng-messages="carForm.enginetype.$error.required">
-                            <div ng-message="required">This is required.</div>
+                        <div ng-messages="carForm.enginetype.$error" ng-show="carForm.enginetype.$touched">
+                            <div ng-show="carForm.enginetype.$invalid">This is required.</div>
                         </div>
                     </md-input-container>
-                    <md-input-container flex>
+                    <md-container flex>
                         <label>Date</label>
-                        <input ng-model="car.date" name="date" required>
-                        <div ng-messages="carForm.date.$error.required">
-                            <div ng-message="required">This is required.</div>
+                        <md-datepicker ng-model="car.date" name="date" required></md-datepicker>
+                        <div ng-messages="carForm.date.$error" ng-show="carForm.date.$touched">
+                            <div ng-show="carForm.date.$invalid">This is required.</div>
                         </div>
-                    </md-input-container>
+                    </md-container>
                 </div>
                 <div layout layout-sm="column" class="md-block">
                 <md-input-container class="md-block" flex>
                     <label>Describe</label>
-                    <textarea ng-model="car.des" rows="5" name="des" required></textarea>
-                    <div ng-messages="carForm.des.$error">
-                        <div ng-message="required">This is required.</div>
+                    <textarea ng-model="car.description" rows="5" name="description" required></textarea>
+                    <div ng-messages="carForm.description.$error" ng-show="carForm.description.$touched">
+                        <div ng-show="carForm.description.$invalid">This is required.</div>
                     </div>
                 </md-input-container>
                     </div>

@@ -6,7 +6,7 @@
                 <md-icon md-svg-icon="asset/images/menu.svg"></md-icon>
             </md-button>
             <h3>
-                Shack - Car List
+               <a ui-sref="main"> Shack List </a>
             </h3>
             <span flex></span>
             <md-button aria-label="Search" ng-click="showSearch()">
@@ -16,9 +16,9 @@
         </div>
         <md-fab-speed-dial
                 md-direction="down"
-                class="md-fling md-fab-top-right">
+                class="md-fling md-fab-top-right" >
             <md-fab-trigger>
-                <md-button class="md-fab">
+                <md-button class="md-fab" aria-label="submenu">
                     <ng-md-icon icon="view_week"></ng-md-icon>
                 </md-button>
             </md-fab-trigger>
@@ -31,7 +31,7 @@
                 <md-button class="md-fab md-raised md-mini"
                            ng-click="clearNotes($event)">
                     <ng-md-icon icon="clear_all"></ng-md-icon>
-                    <md-tooltip md-direction="left">Clear all notes</md-tooltip>
+                    <md-tooltip md-direction="left"> About Us </md-tooltip>
                 </md-button>
             </md-fab-actions>
         </md-fab-speed-dial>
@@ -46,15 +46,11 @@
                 Back
             </h3>
             <md-input-container md-theme="input" flex class="search_input">
-                <!--<label>&nbsp;</label>-->
-                <input  />
+                <input />
             </md-input-container>
             <md-button aria-label="Search" ng-click="showSearch()">
                 <ng-md-icon icon="search"></ng-md-icon>
             </md-button>
-            <!--<md-button aria-label="Open Settings" ng-click="showListBottomSheet($event)">-->
-                <!--<ng-md-icon icon="more_vert"></ng-md-icon>-->
-            <!--</md-button>-->
         </div>
 
     </md-toolbar>

@@ -7,7 +7,10 @@
         'ui.router',
         'ngMaterial',
         'ngAnimate',
-        'ngMdIcons'
+        'ngMdIcons',
+        'ngResource',
+        'carResourceMock',
+        'ng-mfb'
     ]);
 
     // material design config
@@ -30,10 +33,13 @@
                 'hue-1': '50'
             })
             .accentPalette('pink');
+
         $mdThemingProvider.theme('input', 'default')
             .primaryPalette('red')
 
-}]);
+        // $mdIconProvider.defaultIconSet('asset/images/jin_avatar.svg')
+
+    }]);
 
 
 
@@ -51,9 +57,17 @@
                 controller: 'MainController'
             })
             .state('car_detail', {
-              url: "/car_detail/:id",
+              url: "/car_detail/:serial",
               templateUrl: "car_detail/car_detail.html",
-              controller: 'DetailController'
+              controller: 'CarDetailController',
+              resolve: {
+                carResource: "carResource",
+
+                car: function (carResource, $stateParams) {
+                    var serial = $stateParams.serial;
+                    return carResource.get({ serial: serial}).$promise
+                }
+              }
             })
             .state('account', {
               url: "/account",

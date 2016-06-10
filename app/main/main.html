@@ -13,7 +13,7 @@
         </md-not-found>
     </md-autocomplete>
 </div>
-<md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex">
+<md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex" md-no-pagination="true">
     <md-tab id="tab1" md-selected="tab1-content">
         Card View
     </md-tab>
@@ -21,98 +21,107 @@
         List View
     </md-tab>
 </md-tabs>
+<nav mfb-menu position="br" effect="slidein-spring"
+     active-icon="ion-edit" resting-icon="ion-plus-round"
+     toggling-method="hover" >
+    <button mfb-button label="Add Car"  icon="ion-model-s" ng-click="addCar($event)"></button>
+    <button mfb-button label="Github"  icon="ion-social-octocat" ng-click="goHub()"></button>
+</nav>
 <ui-view layout="column" layout-fill layout-padding>
-    <div class="inset" hide-sm></div>
     <ng-switch on="data.selectedIndex" class="tabpanel-container">
-<div role="tabpanel"
-     id="tab1-content"
-     aria-labelledby="tab1"
-     ng-switch-when="0"
-     md-swipe-left="next()"
-     md-swipe-right="previous()"
-     layout="row" layout-align="center center">
-<md-content layout-xs="column" layout-wrap layout="row" role="main">
-    <md-button class=" md-fab md-fab-top-left" ng-click="addCar($event)">
-        <ng-md-icon icon="add" aria-label="Add"></ng-md-icon>
-    </md-button>
-    <div flex md-scroll-y layout="row" flex-gt-xs="33" flex="100" ng-repeat="car in cars | filter:searchText">
-        <md-card flex>
-            <img ng-src="asset/images/{{car.image}}" class="md-card-image" alt="Washed Out">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">{{car.make}} {{ car.model}}</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                <p>
-                    color : {{ car.color}}
-                </p>
-                <p>
-                    year : {{ car.year}}
-                </p>
-                <p>
-                    {{ car.des }}
-                </p>
+        <div role="tabpanel"
+             id="tab1-content"
+             aria-labelledby="tab1"
+             ng-switch-when="0"
+             md-swipe-left="next()"
+             md-swipe-right="previous()"
+             layout="row" layout-align="center center" class="tabsdemoDynamicHeight">
+            <md-content layout-xs="column" layout-wrap layout="row" role="main">
+                <!--<md-button class=" md-fab md-fab-top-left" ng-click="addCar($event)">-->
+                    <!--<ng-md-icon icon="add" aria-label="Add"></ng-md-icon>-->
+                <!--</md-button>-->
 
-            </md-card-content>
-            <md-card-actions layout="row" layout-align="end center">
-                <md-button ui-sref="car_detail" class="send-button md-accent md-raised">Detail</md-button>
-                <md-button ui-sref="car_detail" class="send-button md-primary md-raised">Edit</md-button>
-            </md-card-actions>
-        </md-card>
-    </div>
-</md-content>
-</div>
-
-<div role="tabpanel"
-     id="tab2-content"
-     aria-labelledby="tab2"
-     ng-switch-when="1"
-     md-swipe-left="next()"
-     md-swipe-right="previous()"
-     layout="row" layout-align="center center">
-    <md-card flex-gt-sm="90" flex-gt-md="80">
-        <md-card-content>
-            <md-list>
-                <md-item ng-repeat="car in cars | filter:searchText">
-                    <md-item-content layout="row">
-                        <div class="md-tile-left inset" hide-sm>
-                            <user-avatar></user-avatar>
-                        </div>
-                        <div class="md-tile-content">
-                            <div layout="row" layout-align="space-between">
-                                <div>
-                                    <h3>{{car.make}}</h3>
-                                    <h4>{{car.model}} {{car.year}}</h4>
-                                </div>
-                                <div></div>
-                                <div>
-                                    <md-button ui-sref="car_detail" class="send-button md-accent md-raised">Detail
-                                    </md-button>
-                                    <md-button ui-sref="car_detail" class="send-button md-primary md-raised">Edit
-                                    </md-button>
-                                </div>
-                            </div>
+                <div flex md-scroll-y layout="row" flex-gt-xs="33" flex="100"
+                     ng-repeat="car in cars | filter:searchText">
+                    <md-card flex>
+                        <img ng-src="asset/images/{{car.image}}" class="md-card-image" alt="New Car">
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">{{car.make}} {{ car.model}}</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
                             <p>
-                                {{car.des}}
+                                COLOR : {{ car.color}}
                             </p>
-                        </div>
-                    </md-item-content>
-                    <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
-                    <md-divider hide-gt-sm ng-if="!$last"></md-divider>
-                </md-item>
-                <md-divider></md-divider>
-                <md-item layout class="inset">
-                    <md-button layout layout-align="start center" flex class="md-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                            <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-                        </svg>
-                        More
-                    </md-button>
-                </md-item>
-            </md-list>
-        </md-card-content>
-    </md-card>
-</div>
-</ng-switch>
-    </ui-view>
+                            <p>
+                                YEAR : {{ car.year}}
+                            </p>
+                            <p>
+                                {{ car.description }}
+                            </p>
+
+                        </md-card-content>
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button ui-sref="car_detail({serial : car.serial})" class="send-button md-accent md-raised">Detail</md-button>
+                            <md-button ui-sref="car_detail" class="send-button md-primary md-raised">Edit</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+            </md-content>
+        </div>
+
+        <div role="tabpanel"
+             id="tab2-content"
+             aria-labelledby="tab2"
+             ng-switch-when="1"
+             md-swipe-left="next()"
+             md-swipe-right="previous()"
+             layout="row" layout-align="center center">
+            <md-card flex-gt-sm="90" flex-gt-md="80">
+                <md-card-content>
+                    <md-list>
+                        <md-item ng-repeat="car in cars | filter:searchText">
+                            <md-item-content layout="row">
+                                <div class="md-tile-left inset" hide-xs>
+                                    <user-avatar></user-avatar>
+                                </div>
+                                <div class="md-tile-content">
+                                    <div layout="row" layout-align="space-between">
+                                        <div>
+                                            <h3>{{car.make}}</h3>
+                                            <h4>{{car.model}} {{car.year}}</h4>
+                                        </div>
+                                        <div></div>
+                                        <div>
+                                            <md-button ui-sref="car_detail({serial : car.serial})" class="send-button md-accent md-raised">
+                                                Detail
+                                            </md-button>
+                                            <md-button ui-sref="car_detail" class="send-button md-primary md-raised">
+                                                Edit
+                                            </md-button>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        {{car.description}}
+                                    </p>
+                                </div>
+                            </md-item-content>
+                            <md-divider md-inset hide-sm ng-if="!$last"></md-divider>
+                            <md-divider hide-gt-sm ng-if="!$last"></md-divider>
+                        </md-item>
+                        <md-divider></md-divider>
+                        <md-item layout class="inset">
+                            <md-button layout layout-align="start center" flex class="md-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                                </svg>
+                                More
+                            </md-button>
+                        </md-item>
+                    </md-list>
+                </md-card-content>
+            </md-card>
+        </div>
+    </ng-switch>
+</ui-view>

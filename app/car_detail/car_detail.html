@@ -1,1 +1,46 @@
-This is car detail page
+<md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-sm="70" layout="column" layout-align-gt-sm="center center">
+
+        <md-card class="md-margin">
+            <md-card-header class="car-detail-header md-padding">
+                <md-card-header-text>
+                    <span class="md-display-1">{{car.make}}</span>
+                    <span class="md-headline">{{car.model}}</span>
+                </md-card-header-text>
+            </md-card-header>
+            <div>
+                <img ng-src="asset/images/{{car.serial}}.jpg" class="md-card-image" alt="image"
+                     style="max-height:400px;">
+            </div>
+            <md-card-title>
+                <md-card-title-text>
+                    <div layout="row" layout-xs="column" >
+                        <div class="md-title" flex>Color: {{car.color}} </div>
+                        <div class="md-title" flex>Year:  {{car.year}} </div>
+                    </div>
+                    <div layout="row" layout-xs="column" >
+                        <span class="md-title" flex>Engine: {{car.enginetype}} </span>
+                        <span class="md-title" flex>Price: {{car.listprice | currency }} </span>
+                    </div>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content class="md-padding">
+                <p layout="row">
+                    {{ car.description }}
+                </p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="start center" class="md-padding">
+                <md-card-icon-actions>
+                    <md-button class="md-icon-button md-accent" aria-label="Favorite">
+                        <i class="fa fa-heart fa-lg" aria-hidden="true"></i>
+                    </md-button>
+                    <md-button class="md-icon-button md-accent" aria-label="Share">
+                        <i class="fa fa-share fa-lg" aria-hidden="true"></i>
+                    </md-button>
+                </md-card-icon-actions>
+                <md-button ui-sref="main" class="md-raised">Car List</md-button>
+                <md-button class="md-raised">Comment</md-button>
+            </md-card-actions>
+        </md-card>
+    </div>
+</md-content>
