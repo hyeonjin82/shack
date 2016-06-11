@@ -4,6 +4,13 @@
             <div layout="column" layout-padding>
                 <div layout layout-sm="column">
                     <md-input-container class="md-block" flex>
+                        <label>Serial</label>
+                        <input ng-model="car.serial" name="serial" required>
+                        <div ng-messages="carForm.serial.$invalid" ng-show="carForm.serial.$touched">
+                            <div ng-show="carForm.serial.$invalid">This is required!</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block" flex>
                         <label>Make</label>
                         <input ng-model="car.make" name="make" required>
                         <div ng-messages="carForm.make.$invalid" ng-show="carForm.make.$touched">
@@ -19,7 +26,7 @@
                     </md-input-container>
                 </div>
                 <div layout layout-sm="column" class="md-block">
-                    <md-input-container flex="35">
+                    <md-input-container flex>
                         <label>Color</label>
                         <md-select ng-model="car.color" name="color" required>
                             <md-option ng-repeat="color in colors" ng-value="color">
@@ -30,18 +37,31 @@
                             <div ng-show="carForm.color.$invalid">This is required.</div>
                         </div>
                     </md-input-container>
-                    <md-input-container flex="25">
+                    <md-input-container flex>
                         <label>Engine Type</label>
                         <input ng-model="car.enginetype" name="enginetype" required>
                         <div ng-messages="carForm.enginetype.$error" ng-show="carForm.enginetype.$touched">
                             <div ng-show="carForm.enginetype.$invalid">This is required.</div>
                         </div>
                     </md-input-container>
-                    <md-container flex>
-                        <label>Date</label>
-                        <md-datepicker ng-model="car.date" name="date" required></md-datepicker>
-                        <div ng-messages="carForm.date.$error" ng-show="carForm.date.$touched">
-                            <div ng-show="carForm.date.$invalid">This is required.</div>
+                </div>
+                <div layout layout-sm="column" class="md-block">
+                    <md-input-container flex>
+                        <label>Year</label>
+                        <md-select ng-model="car.year" name="year" required>
+                            <md-option ng-repeat="year in years" ng-value="year">
+                                {{ year }}
+                            </md-option>
+                        </md-select>
+                        <div ng-messages="carForm.year.$error" ng-show="carForm.year.$touched">
+                            <div ng-show="carForm.year.$invalid">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-container class="regdate" flex>
+                        <label></label>
+                        <md-datepicker ng-model="car.date" name="date" required ></md-datepicker>
+                        <div class="validation-messages" ng-messages="carForm.date.$error"  ng-show="carForm.date.$touched">
+                            <div ng-show="carForm.date.$invalid">This date is required!</div>
                         </div>
                     </md-container>
                 </div>

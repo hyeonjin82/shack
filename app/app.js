@@ -37,7 +37,7 @@
         $mdThemingProvider.theme('input', 'default')
             .primaryPalette('red')
 
-        // $mdIconProvider.defaultIconSet('asset/images/jin_avatar.svg')
+        $mdIconProvider.defaultIconSet('asset/images/jin_avatar.svg')
 
     }]);
 
@@ -57,15 +57,15 @@
                 controller: 'MainController'
             })
             .state('car_detail', {
-              url: "/car_detail/:serial",
+              url: "/car_detail/:id",
               templateUrl: "car_detail/car_detail.html",
               controller: 'CarDetailController',
               resolve: {
                 carResource: "carResource",
 
                 car: function (carResource, $stateParams) {
-                    var serial = $stateParams.serial;
-                    return carResource.get({ serial: serial}).$promise
+                    var id = $stateParams.id;
+                    return carResource.get({ id: id}).$promise
                 }
               }
             })

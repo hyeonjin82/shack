@@ -5,7 +5,7 @@
         .factory("carResource", ["$resource", carResource]);
     
     function carResource($resource) {
-        return $resource("/api/cars/:serial");
+        return $resource("/api/cars/:id");
     }
 
 }());
