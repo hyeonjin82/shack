@@ -9,8 +9,11 @@
                <a ui-sref="main"> Shack List </a>
             </h3>
             <span flex></span>
-            <md-button aria-label="Search" ng-click="showSearch()">
-                <ng-md-icon icon="search"></ng-md-icon>
+            <ng-md-icon  icon="facebook-box"></ng-md-icon>
+            <ng-md-icon  icon="linkedin-box"></ng-md-icon>
+            <ng-md-icon  icon="google-plus-box"></ng-md-icon>
+            <md-button aria-label="Search" ng-click="signIn()">
+                <ng-md-icon icon="login"></ng-md-icon>
             </md-button>
             <span flex="5"></span>
         </div>
@@ -23,6 +26,11 @@
                 </md-button>
             </md-fab-trigger>
             <md-fab-actions>
+                <md-button class="md-fab md-raised md-mini"
+                           ng-click="showSignUp($event)">
+                    <ng-md-icon icon="person_add"></ng-md-icon>
+                    <md-tooltip md-direction="left">Sign Up</md-tooltip>
+                </md-button>
                 <md-button class="md-fab md-raised md-mini"
                            ng-click="showContactOptions($event)">
                     <ng-md-icon icon="face"></ng-md-icon>

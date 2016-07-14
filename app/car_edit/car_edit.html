@@ -1,11 +1,11 @@
-<md-dialog ng-controller="AddCarController">
-    <form name="carForm" ng-submit="save()">
+<md-dialog ng-controller="EditCarController">
+    <form name="carForm" ng-submit="update()">
         <md-dialog-content class="md-padding">
             <div layout="column" layout-padding>
                 <div layout layout-sm="column">
                     <md-input-container class="md-block" flex>
                         <label>Serial</label>
-                        <input ng-model="car.serial" name="serial" required>
+                        <input ng-model="car.serial" name="serial" ng-value="car.serial" required>
                         <div ng-messages="carForm.serial.$invalid" ng-show="carForm.serial.$touched">
                             <div ng-show="carForm.serial.$invalid">This is required!</div>
                         </div>

@@ -41,7 +41,7 @@
                     <!--<ng-md-icon icon="add" aria-label="Add"></ng-md-icon>-->
                 <!--</md-button>-->
 
-                <div flex md-scroll-y layout="row" flex-gt-xs="33" flex="100"
+                <div flex md-scroll-y layout="row" flex-gt-sm="33" flex-gt-md="25" flex-sm="50" flex="100"
                      ng-repeat="car in cars | filter:searchText">
                     <md-card flex>
                         <img ng-src="asset/images/{{car.image}}" class="md-card-image" alt="New Car">
@@ -63,8 +63,8 @@
 
                         </md-card-content>
                         <md-card-actions layout="row" layout-align="end center">
-                            <md-button ui-sref="car_detail({id : car.id})" class="send-button md-accent md-raised">Detail</md-button>
-                            <md-button ui-sref="car_detail" class="send-button md-primary md-raised">Edit</md-button>
+                            <md-button ui-sref="car_detail({id : car.id})" class="send-button md-accent md-raised" style="margin-right: 5px;">Detail</md-button>
+                            <md-button ng-click="editCar($event, car.id)" class="send-button md-primary md-raised">Edit</md-button>
                         </md-card-actions>
                     </md-card>
                 </div>
@@ -97,7 +97,7 @@
                                             <md-button ui-sref="car_detail({id : car.id})" class="send-button md-accent md-raised">
                                                 Detail
                                             </md-button>
-                                            <md-button ui-sref="car_detail" class="send-button md-primary md-raised">
+                                            <md-button ng-click="editCar($event, car.id)" class="send-button md-primary md-raised">
                                                 Edit
                                             </md-button>
                                         </div>

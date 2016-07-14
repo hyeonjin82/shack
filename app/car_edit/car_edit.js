@@ -1,17 +1,22 @@
+/**
+ * Created by jin on 2016-06-24.
+ */
 (function() {
     "use strict"
 
     angular.module('shack')
-           .controller('AddCarController' , AddCarController);
+        .controller('EditCarController' , EditCarController);
 
 
-    AddCarController.$inject = [
+    EditCarController.$inject = [
         '$scope',
         '$mdDialog',
         'FileUploader'
     ];
 
-    function AddCarController($scope, $mdDialog, FileUploader) {
+    function EditCarController($scope, $mdDialog, FileUploader) {
+
+        // $scope.car = carResource.get({id: id}).$promise;
 
         var uploader = $scope.uploader = new FileUploader({
             url: '*'

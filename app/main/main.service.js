@@ -3,9 +3,17 @@
 
     angular.module("shack")
         .factory("carResource", ["$resource", carResource]);
-    
+
     function carResource($resource) {
-        return $resource("/api/cars/:id");
+        return $resource(
+            'http://localhost:8080/shacksecu/api/car/:id',
+            {id:'@id'},
+            {
+                update: {
+                    method : 'PUT'
+                }
+            }
+        );
     }
 
 }());

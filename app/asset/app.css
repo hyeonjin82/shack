@@ -34,3 +34,12 @@ html, body {
   color: #dd2c00;
   margin: 10px 0 0 25px;
 }
+
+.loginBox {
+  max-width:  100%;
+  width: 550px
+}
+
+.stretch input  {
+  width: 100%
+}
