@@ -1,5 +1,5 @@
 <md-dialog ng-controller="AddCarController">
-    <form name="carForm" ng-submit="save()">
+    <form name="carForm" ng-submit="save(car.image)">
         <md-dialog-content class="md-padding">
             <div layout="column" layout-padding>
                 <div layout layout-sm="column">
@@ -78,10 +78,13 @@
                 <div layout layout-sm="column" class="md-block">
                     <md-input-container class="md-block" flex>
                         <label>Car Picture</label>
-                        <input type="file" nv-file-select="" uploader="uploader"/>
+                        <input type="file" ngf-select ng-model="car.image" name="carImage"
+                               accept="image/*">
+                        <div ng-messages="carForm.carImage.$error" ng-show="carForm.carImage.$touched">
+                            <div ng-show="carForm.carImage.$invalid">This is required.</div>
+                        </div>
                     </md-input-container>
                 </div>
-
             </div>
         </md-dialog-content>
         <md-dialog-actions layout="row">

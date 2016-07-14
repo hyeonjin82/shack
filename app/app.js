@@ -12,7 +12,7 @@
         'ng-mfb',
         'http-auth-interceptor',
         'ngStorage',
-        'angularFileUpload',
+        'ngFileUpload',
         'restangular',
         'ezfb'
 
