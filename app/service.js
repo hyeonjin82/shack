@@ -23,17 +23,20 @@
                 this.userRoles = null;
             };
             return this;
-        }).service('AuthSharedService', function ($rootScope, $http, $resource, authService, Session) {
+        }).service('AuthSharedService', function ($rootScope, $http, $resource, authService, Session, X_XSRF_TOKEN) {
         return {
             login: function (userName, password, rememberMe) {
+                console.log(userName + ',  ' +  password + ',  ' + rememberMe);
+                var data = {'X-XSRF-TOKEN':X_XSRF_TOKEN};
                 var config = {
                     params: {
                         username: userName,
-                        password: password
+                        password: password,
+                        rememberMe:rememberMe
                     },
                     ignoreAuthModule: 'ignoreAuthModule'
                 };
-                $http.post('http://localhost:8080/shacksecu/api/authenticate', '', config)
+                $http.post('http://localhost:8080/SpringHibernateRestService/api/authenticate', data, config)
                     .success(function (data, status, headers, config) {
                         authService.loginConfirmed(data);
                     }).error(function (data, status, headers, config) {
@@ -41,7 +44,7 @@
                     Session.invalidate();
                 });
             },
-            getAccount: function () {
+             getAccount: function () {
                 $rootScope.loadingAccount = true;
                 $http.get('account/profile')
                     .then(function (response) {

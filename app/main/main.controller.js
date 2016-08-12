@@ -15,17 +15,24 @@
 			'$mdSidenav',
 			'$mdMedia',
 			'carResource',
-			'$window'
+			'$window',
+			'carService'
 		];
 
-		function MainController($scope, $mdDialog, $mdToast, $mdSidenav, $mdMedia, carResource, $window){
+		function MainController($scope, $mdDialog, $mdToast, $mdSidenav, $mdMedia, carResource, $window,carService){
 			$scope.show = false;
 			$scope.searchText= '';
 			$scope.cars = [];
 
-			carResource.query(function(data) {
+			carService.allCars().then(function (data) {
 				$scope.cars = data;
+			}, function (errResponse) {
+
 			});
+
+			// carResource.query(function(data) {
+			// 	$scope.cars = data;
+			// });
 
 			$scope.toggleFilter = function () {
 				$mdSidenav('left').toggle();
@@ -103,7 +110,7 @@
 			};
 			
 			$scope.goHub =function () {
-				$window.location.href = 'https://github.com/alexpark90/shack';
+				$window.location.href = 'https://gitlab.com/HyeonjinLee/Shack-Security_Backend';
 			};
 		}
 

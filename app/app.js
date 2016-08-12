@@ -24,6 +24,8 @@
         seller: 'seller'
     });
 
+    shack.constant("X_XSRF_TOKEN", '42796ecb-ca8d-47c4-8ca4-660a182ee135');
+
     shack.constant('eventConstants', {
         authentication: 'authentication',
         registration: 'registration',
@@ -80,11 +82,11 @@
                 templateUrl: "car_detail/car_detail.html",
                 controller: 'CarDetailController',
                 resolve: {
-                    carResource: "carResource",
+                    carService: "carService",
 
-                    car: function (carResource, $stateParams) {
+                    car: function (carService, $stateParams) {
                         var id = $stateParams.id;
-                        return carResource.get({id: id}).$promise
+                        return carService.detailCar(id);
                     }
                 }
             })

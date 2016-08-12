@@ -25,15 +25,15 @@
 
         $scope.rememberMe = true;
         $scope.login = function () {
-                      // $rootScope.authenticationError = false;
-            // AuthSharedService.login(
-            //     $scope.username,
-            //     $scope.password,
-            //     $scope.rememberMe
-            // );
+            $rootScope.authenticationError = false;
+            AuthSharedService.login(
+                $scope.username,
+                $scope.password,
+                $scope.rememberMe
+            );
 
             $log.debug('Logging in with username: ' + $scope.username + ', password: ' + $scope.password);
-            AuthenticationFactory.login($scope.username, $scope.password, onLoginSuccess, onLoginFailure);
+            // AuthenticationFactory.login($scope.username, $scope.password, onLoginSuccess, onLoginFailure);
         }
 
 
@@ -61,7 +61,7 @@
         };
 
         var onLoginFailure = function (message) {
-            SweetAlert.error("Incorrect credentials", message);
+            //SweetAlert.error("Incorrect credentials", message);
         };
 
 

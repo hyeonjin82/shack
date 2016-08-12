@@ -38,7 +38,7 @@
              layout="row" layout-align="center center" class="tabsdemoDynamicHeight">
             <md-content layout-xs="column" layout-wrap layout="row" role="main">
                 <!--<md-button class=" md-fab md-fab-top-left" ng-click="addCar($event)">-->
-                    <!--<ng-md-icon icon="add" aria-label="Add"></ng-md-icon>-->
+                <!--<ng-md-icon icon="add" aria-label="Add"></ng-md-icon>-->
                 <!--</md-button>-->
 
                 <div flex md-scroll-y layout="row" flex-gt-sm="33" flex-gt-md="25" flex-sm="50" flex="100"
@@ -92,8 +92,7 @@
                                             <h3>{{car.make}}</h3>
                                             <h4>{{car.model}} {{car.year}}</h4>
                                         </div>
-                                        <div></div>
-                                        <div>
+                                        <div layout="column" layout-align="space-between">
                                             <md-button ui-sref="car_detail({id : car.id})" class="send-button md-accent md-raised">
                                                 Detail
                                             </md-button>
